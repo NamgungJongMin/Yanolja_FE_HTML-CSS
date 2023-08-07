@@ -19,30 +19,22 @@ const $prev = document.querySelector('.section2-move.prev');
 const $next = document.querySelector('.section2-move.next');
 let section2Order = 0;
 
-$prev.addEventListener('click', e => {
-  if (section2Order === 0) section2Order = 0;
-  else section2Order = section2Order - 1;
+function moveSection(increment) {
+  section2Order = increment ? Math.min(section2Order + 1, 6) : Math.max(section2Order - 1, 0);
 
   const innerWidth = window.innerWidth;
   const widthBase = innerWidth < 1200 ? window.innerWidth : 1200;
   const moveWidth = widthBase === 1200 ? `${(section2Order * widthBase) / 10}rem` : '100vw';
 
-  // console.log(section2Order, widthBase, moveWidth);
-
   document.querySelector('.section2__container__flex').style.transform = `translate(-${moveWidth})`;
+}
+
+$prev.addEventListener('click', e => {
+  moveSection(false);
 });
 
 $next.addEventListener('click', e => {
-  if (section2Order === 6) section2Order = 0;
-  else section2Order = section2Order + 1;
-
-  const innerWidth = window.innerWidth;
-  const widthBase = innerWidth < 1200 ? window.innerWidth : 1200;
-  const moveWidth = widthBase === 1200 ? `${(section2Order * widthBase) / 10}rem` : '100vw';
-
-  // console.log(section2Order, widthBase, moveWidth);
-
-  document.querySelector('.section2__container__flex').style.transform = `translate(-${moveWidth})`;
+  moveSection(true);
 });
 
 /* ----------------------------- load animation ----------------------------- */
@@ -72,10 +64,10 @@ window.addEventListener(
 
 /* ----------------------------- rwd modal menu ----------------------------- */
 
-$aside = document.querySelector('.rwd-menu');
-$menuBtn = document.querySelector('.nav-list--small');
-$exitBtn = document.querySelector('.rwd-exit');
-$modal = document.querySelector('.modal');
+const $aside = document.querySelector('.rwd-menu');
+const $menuBtn = document.querySelector('.nav-list--small');
+const $exitBtn = document.querySelector('.rwd-exit');
+const $modal = document.querySelector('.modal');
 
 $menuBtn.addEventListener('click', e => {
   $aside.classList.toggle('active');
