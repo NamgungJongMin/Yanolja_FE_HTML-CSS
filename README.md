@@ -11,7 +11,7 @@
 ### 1. 스크롤 기반 애니메이션
 ![animation](https://github.com/KDT1-FE/Y_FE_HTML_CSS/assets/100336573/049f758d-6ccf-4c98-8677-4a458e1f1fbf)
 
-페이지 스크롤링 시 현재 window의 innerWidth 값을 읽어 지정한 스크롤 위치에서 레이아웃 애니메이션을 실행
+페이지 스크롤링 시 현재 window의 scrollY 값을 읽어 지정한 스크롤 위치에서 레이아웃 애니메이션을 실행
 
 ---
 
